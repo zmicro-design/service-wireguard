@@ -5,7 +5,7 @@ services:
     restart: always
     image: whatwewant/wireguard:${SERVICE_WIREGUARD_IMAGE_VERSION}
     ports:
-      - 0.0.0.0:${SERVICE_WIREGUARD_DATA_PORT}:51820/udp
+      - 0.0.0.0:${SERVICE_WIREGUARD_DATA_PORT}:${SERVICE_WIREGUARD_DATA_PORT}/udp
       - 0.0.0.0:${SERVICE_WIREGUARD_ADMIN_PORT}:51821/tcp
     cap_add:
       - NET_ADMIN
@@ -15,6 +15,7 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1
     environment:
       WG_HOST: ${SERVICE_WIREGUARD_HOST}
+      WG_PORT: ${SERVICE_WIREGUARD_DATA_PORT}
       PASSWORD: ${SERVICE_WIREGUARD_PASSWORD}
       WG_DEFAULT_ADDRESS: ${SERVICE_WIREGUARD_DEFAULT_ADDRESS}
     volumes:
