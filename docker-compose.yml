@@ -17,6 +17,9 @@ services:
       WG_HOST: ${SERVICE_WIREGUARD_HOST}
       PASSWORD: ${SERVICE_WIREGUARD_PASSWORD}
       WG_DEFAULT_ADDRESS: ${SERVICE_WIREGUARD_DEFAULT_ADDRESS}
+    volumes:
+      # - /lib/modules:/lib/modules
+      - ${SERVICE_DATA}:/etc/wireguard
 
 networks:
   default:
