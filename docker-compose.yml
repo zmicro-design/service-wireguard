@@ -5,7 +5,7 @@ services:
     restart: always
     image: whatwewant/wireguard:${SERVICE_WIREGUARD_IMAGE_VERSION}
     ports:
-      - 0.0.0.0:${SERVICE_WIREGUARD_DATA_PORT}:${SERVICE_WIREGUARD_DATA_PORT}/udp
+      - 0.0.0.0:${SERVICE_WIREGUARD_DATA_PORT}:51820/udp
       - 0.0.0.0:${SERVICE_WIREGUARD_ADMIN_PORT}:51821/tcp
     cap_add:
       - NET_ADMIN
