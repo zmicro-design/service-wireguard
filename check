@@ -1,0 +1,15 @@
+#!/bin/bash
+
+load inquirer
+
+check() {
+  if [ "$DEBUG" = "true" ]; then
+    log::info "[DEBUG][service][workspace]: $SERVICE_CONFIG"
+    cat $SERVICE_CONFIG
+  fi
+
+  config::check_or_set SERVICE_WIREGUARD_HOST text $SERVICE_CONFIG "Input SERVICE_WIREGUARD_HOST:"
+  config::check_or_set SERVICE_WIREGUARD_PASSWORD text $SERVICE_CONFIG "Input SERVICE_WIREGUARD_PASSWORD:"
+}
+
+check $@
