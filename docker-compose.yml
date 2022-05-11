@@ -6,7 +6,7 @@ services:
     image: whatwewant/wireguard:${SERVICE_WIREGUARD_IMAGE_VERSION}
     ports:
       - 0.0.0.0:${SERVICE_WIREGUARD_DATA_PORT}:51820/udp
-      - 127.0.0.1:${SERVICE_WIREGUARD_ADMIN_PORT}:51821/tcp
+      - 0.0.0.0:${SERVICE_WIREGUARD_ADMIN_PORT}:51821/tcp
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
