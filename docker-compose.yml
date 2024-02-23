@@ -14,9 +14,9 @@ services:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
     environment:
-      WG_HOST: ${SERVICE_WIREGUARD_HOST}
+      WG_HOST: ${SERVICE_WIREGUARD_HOST:-0.0.0.0}
       WG_PORT: ${SERVICE_WIREGUARD_DATA_PORT}
-      PASSWORD: ${SERVICE_WIREGUARD_PASSWORD}
+      PASSWORD: ${SERVICE_WIREGUARD_ADMIN_PASSWORD}
       WG_DEFAULT_ADDRESS: ${SERVICE_WIREGUARD_DEFAULT_ADDRESS}
     volumes:
       # - /lib/modules:/lib/modules
