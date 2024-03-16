@@ -14,10 +14,12 @@ services:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
     environment:
+      # 会影响配置
       WG_HOST: ${SERVICE_WIREGUARD_HOST:-0.0.0.0}
       PASSWORD: ${SERVICE_WIREGUARD_ADMIN_PASSWORD}
       WG_DEFAULT_ADDRESS: ${SERVICE_WIREGUARD_DEFAULT_ADDRESS:-10.8.0.x}
       WG_DEFAULT_DNS: ${SERVICE_WIREGUARD_DEFAULT_DNS:-1.1.1.1}
+      WG_ALLOWED_IPS: ${SERVICE_WIREGUARD_ALLOWED_IPS:-0.0.0.0/0}
     volumes:
       # - /lib/modules:/lib/modules
       - ${SERVICE_DATA}:/etc/wireguard
