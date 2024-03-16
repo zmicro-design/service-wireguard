@@ -17,9 +17,15 @@ services:
       # 会影响配置
       WG_HOST: ${SERVICE_WIREGUARD_HOST:-0.0.0.0}
       PASSWORD: ${SERVICE_WIREGUARD_ADMIN_PASSWORD}
+      #####
+      # 自定义 DNS，无需变更
+      WG_DEFAULT_DNS: ${SERVICE_WIREGUARD_DEFAULT_DNS:-1.1.1.1, 114.114.114.114}
+      # 自定义网段，注意 WG_DEFAULT_ADDRESS 要和 WG_ALLOWED_IPS 一致
+      #   比如：
+      #     @example-1: WG_DEFAULT_ADDRESS = 10.8.0.x，则 WG_ALLOWED_IPS 为 10.8.0.0/24
+      #     @example-2: WG_DEFAULT_ADDRESS = 10.10.0.x，则 WG_ALLOWED_IPS 为 10.10.0.0/24
       WG_DEFAULT_ADDRESS: ${SERVICE_WIREGUARD_DEFAULT_ADDRESS:-10.8.0.x}
-      WG_DEFAULT_DNS: ${SERVICE_WIREGUARD_DEFAULT_DNS:-1.1.1.1}
-      WG_ALLOWED_IPS: ${SERVICE_WIREGUARD_ALLOWED_IPS:-0.0.0.0/0}
+      WG_ALLOWED_IPS: ${SERVICE_WIREGUARD_ALLOWED_IPS:-10.8.0.0/24}
     volumes:
       # - /lib/modules:/lib/modules
       - ${SERVICE_DATA}:/etc/wireguard
