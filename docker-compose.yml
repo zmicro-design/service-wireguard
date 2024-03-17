@@ -16,6 +16,7 @@ services:
     environment:
       # 会影响配置
       WG_HOST: ${SERVICE_WIREGUARD_HOST:-0.0.0.0}
+      WG_PORT: ${SERVICE_WIREGUARD_DATA_PORT}
       PASSWORD: ${SERVICE_WIREGUARD_ADMIN_PASSWORD}
       #####
       # 自定义 DNS，无需变更
